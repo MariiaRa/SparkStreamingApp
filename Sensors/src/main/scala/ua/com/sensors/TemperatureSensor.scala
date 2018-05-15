@@ -6,9 +6,7 @@ import akka.http.scaladsl.model.{HttpMethods, HttpRequest, HttpResponse, StatusC
 import akka.stream.{ActorMaterializer, ActorMaterializerSettings}
 import akka.util.ByteString
 import com.typesafe.config.{Config, ConfigFactory}
-import org.joda.time.DateTime
 import ua.com.values.temperature.Temperature
-
 import scala.concurrent.duration._
 
 object TemperatureSensor {
@@ -44,8 +42,7 @@ class TemperatureSensor(deviceID: String) extends Actor with ActorLogging with T
       log.info("Started")
 
     case GetActualTemperature => {
-      displayTemperatureData(DateTime.now().getMonthOfYear)
-      val url = host + path + parameter1 + deviceID + parameter2 + Temperature.getTemperature(DateTime.now().getMonthOfYear)
+      val url = host + path + parameter1 + deviceID + parameter2 + Temperature.getValue
       val request = HttpRequest.apply(HttpMethods.GET, url)
       HttpRequest.apply()
       http.singleRequest(request).pipeTo(self)
@@ -54,7 +51,7 @@ class TemperatureSensor(deviceID: String) extends Actor with ActorLogging with T
 
     case HttpResponse(StatusCodes.OK, headers, entity, _) =>
       entity.dataBytes.runFold(ByteString(""))(_ ++ _).foreach { body =>
-        log.info("Got response, body: " + body.utf8String)
+        log.info("Got response, body: " + StatusCodes.OK)
       }
 
     case resp@HttpResponse(code, _, _, _) =>
@@ -63,7 +60,7 @@ class TemperatureSensor(deviceID: String) extends Actor with ActorLogging with T
   }
 
   private def displayTemperatureData(month: Int): Unit = {
-    log.info(s"The current temperature is ${Temperature.getTemperature(month)}")
+    log.info(s"The current temperature is ${Temperature.getValue}")
   }
 
 }
