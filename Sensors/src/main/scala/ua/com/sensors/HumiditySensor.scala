@@ -5,10 +5,8 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.{HttpMethods, HttpRequest, HttpResponse, StatusCodes}
 import akka.stream.{ActorMaterializer, ActorMaterializerSettings}
 import com.typesafe.config.{Config, ConfigFactory}
-import org.joda.time.DateTime
-import ua.com.values.humidity.Humidity
 import ua.com.sensors.TemperatureSensor.Start
-import ua.com.values.temperature.Temperature
+import ua.com.values.humidity.Humidity
 
 import scala.concurrent.duration._
 
@@ -41,16 +39,15 @@ class HumiditySensor(deviceID: String) extends Actor with ActorLogging with Time
   override def receive: Receive = {
 
     case Start =>
-      timers.startPeriodicTimer(Key, GetActualHumidity, 3.second)
+      timers.startPeriodicTimer(Key, GetActualHumidity, 10.second)
       log.info("Started")
 
     case GetActualHumidity => {
-      displayHumidityData(DateTime.now().getMonthOfYear)
-      val url = host + path + parameter1 + deviceID + parameter2 + Temperature.getTemperature(DateTime.now().getMonthOfYear)
+
+      val url = host + path + parameter1 + deviceID + parameter2 + Humidity.getValue
       val request = HttpRequest.apply(HttpMethods.GET, url)
       HttpRequest.apply()
       http.singleRequest(request).pipeTo(self)
-      log.info("Requested url: " + url)
     }
     case HttpResponse(StatusCodes.OK, headers, entity, _) => log.info("Got response: " + StatusCodes.OK)
 
@@ -60,6 +57,6 @@ class HumiditySensor(deviceID: String) extends Actor with ActorLogging with Time
   }
 
   private def displayHumidityData(month: Int): Unit = {
-    log.info(s"The current humidity is ${Humidity.getHumidity(month)}%")
+    log.info(s"The current humidity is ${Humidity.getValue}%")
   }
 }
