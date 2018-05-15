@@ -5,10 +5,8 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.{HttpMethods, HttpRequest, HttpResponse, StatusCodes}
 import akka.stream.{ActorMaterializer, ActorMaterializerSettings}
 import com.typesafe.config.{Config, ConfigFactory}
-import org.joda.time.DateTime
-import ua.com.values.emission.Emission
 import ua.com.sensors.TemperatureSensor.Start
-import ua.com.values.temperature.Temperature
+import ua.com.values.emission.Emission
 
 import scala.concurrent.duration._
 
@@ -27,8 +25,11 @@ class EmissionSensor(deviceID: String) extends Actor with ActorLogging with Time
 
   import EmissionSensor._
   import akka.pattern.pipe
+
   val http = Http(context.system)
+
   import context.dispatcher
+
   final implicit val materializer: ActorMaterializer = ActorMaterializer(ActorMaterializerSettings(context.system))
 
   val myConf: Config = ConfigFactory.load()
@@ -44,12 +45,10 @@ class EmissionSensor(deviceID: String) extends Actor with ActorLogging with Time
       log.info("Started")
 
     case GetActualEmission =>
-      displayHumidityData()
-      val url = host + path + parameter1 + deviceID + parameter2 + Temperature.getTemperature(DateTime.now().getMonthOfYear)
+      val url = host + path + parameter1 + deviceID + parameter2 + Emission.getValue
       val request = HttpRequest.apply(HttpMethods.GET, url)
       HttpRequest.apply()
       http.singleRequest(request).pipeTo(self)
-     // log.info("requested url: " + url)
 
     case HttpResponse(StatusCodes.OK, headers, entity, _) => log.info("Got response: " + StatusCodes.OK)
 
@@ -59,6 +58,6 @@ class EmissionSensor(deviceID: String) extends Actor with ActorLogging with Time
   }
 
   private def displayHumidityData(): Unit = {
-    log.info(s"The current CO/CO2 ration is ${Emission.getEmission}")
+    log.info(s"The current CO/CO2 ration is ${Emission.getValue}")
   }
 }
