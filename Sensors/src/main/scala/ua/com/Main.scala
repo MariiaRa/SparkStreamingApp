@@ -4,7 +4,7 @@ import akka.actor.{ActorRef, ActorSystem}
 import akka.stream.ActorMaterializer
 import ua.com.sensors.TemperatureSensor.Start
 import ua.com.sensors.{EmissionSensor, HumiditySensor, TemperatureSensor}
-
+import scala.concurrent.duration._
 import scala.concurrent.ExecutionContextExecutor
 
 object Main extends App {
@@ -25,12 +25,15 @@ object Main extends App {
   val device9: ActorRef = system.actorOf(EmissionSensor.props("E3"), "EmissionActor")
 
   device1 ! Start
-  device4 ! Start
-  device7 ! Start
-  device2 ! Start
-  device5 ! Start
-  device8 ! Start
-  device3 ! Start
-  device6 ! Start
-  device9 ! Start
+
+  system.scheduler.scheduleOnce(2 seconds, device4, Start)
+  system.scheduler.scheduleOnce(4 seconds,  device7, Start)
+  system.scheduler.scheduleOnce(6 seconds,  device2, Start)
+  system.scheduler.scheduleOnce(8 seconds, device5, Start)
+  system.scheduler.scheduleOnce(10 seconds,  device8, Start)
+  system.scheduler.scheduleOnce(12 seconds,  device3, Start)
+  system.scheduler.scheduleOnce(14 seconds,  device6, Start)
+  system.scheduler.scheduleOnce(16 seconds,  device9, Start)
+
+
 }
