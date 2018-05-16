@@ -39,7 +39,7 @@ class HumiditySensor(deviceID: String) extends Actor with ActorLogging with Time
   override def receive: Receive = {
 
     case Start =>
-      timers.startPeriodicTimer(Key, GetActualHumidity, 10.second)
+      timers.startPeriodicTimer(Key, GetActualHumidity, 5.second)
       log.info("Started")
 
     case GetActualHumidity => {
