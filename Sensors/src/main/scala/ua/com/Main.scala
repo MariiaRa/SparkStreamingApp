@@ -24,16 +24,16 @@ object Main extends App {
   val device8: ActorRef = system.actorOf(EmissionSensor.props("E2"), "EmissionActor")
   val device9: ActorRef = system.actorOf(EmissionSensor.props("E3"), "EmissionActor")
 
-  device1 ! Start
+  device9 ! Start
 
   system.scheduler.scheduleOnce(2 seconds, device4, Start)
-  system.scheduler.scheduleOnce(4 seconds,  device7, Start)
-  system.scheduler.scheduleOnce(6 seconds,  device2, Start)
+  system.scheduler.scheduleOnce(4 seconds,  device6, Start)
+  system.scheduler.scheduleOnce(6 seconds,  device8, Start)
   system.scheduler.scheduleOnce(8 seconds, device5, Start)
-  system.scheduler.scheduleOnce(10 seconds,  device8, Start)
+  system.scheduler.scheduleOnce(10 seconds,  device2, Start)
   system.scheduler.scheduleOnce(12 seconds,  device3, Start)
-  system.scheduler.scheduleOnce(14 seconds,  device6, Start)
-  system.scheduler.scheduleOnce(16 seconds,  device9, Start)
+  system.scheduler.scheduleOnce(14 seconds,  device7, Start)
+  system.scheduler.scheduleOnce(16 seconds,  device1, Start)
 
 
 }
