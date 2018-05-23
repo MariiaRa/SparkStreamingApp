@@ -10,5 +10,4 @@ lazy val root = (project in file(".")).
     }
   ).settings(
   libraryDependencies ++= appDependencies
-   //.map(_.exclude("net.jpountz.lz4", "lz4"))
 )
