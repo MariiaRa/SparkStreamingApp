@@ -37,36 +37,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="build.sbt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="build.sbt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.sbt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/com/Main.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="50" column="94" lean-forward="false" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="94" />
+            <state relative-caret-position="234">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
-                <element signature="e#13#63#0" expanded="true" />
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Stream.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Stream.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/com/Stream.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="85" column="28" lean-forward="false" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
+            <state relative-caret-position="259">
+              <caret line="46" column="75" lean-forward="false" selection-start-line="46" selection-start-column="75" selection-end-line="46" selection-end-column="75" />
               <folding>
-                <element signature="e#13#68#0" expanded="true" />
+                <element signature="e#13#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.conf" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,11 +112,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="NBKnowledgePane" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -162,14 +157,23 @@
               <item name="scala" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SparkAppStream" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="NBKnowledgePane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -355,7 +359,7 @@
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1526311562414" />
+    <option name="lastUpdateTimestamp" value="1527088151487" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -411,23 +415,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="24" width="1922" height="1033" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="sbt" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="sbt" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.04429029" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17016575" sideWeight="0.50213444" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2685083" sideWeight="0.50213444" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17016575" sideWeight="0.49786553" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21504803" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2769477" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="sbt-shell-toolwindow" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.072928175" sideWeight="0.8361793" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -435,13 +441,35 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="sbt" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17016575" sideWeight="0.50213444" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1281768" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17016575" sideWeight="0.49786553" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21504803" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="sbt-shell-toolwindow" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -486,30 +514,348 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build.sbt">
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-streaming_2.11/srcs/spark-streaming_2.11-2.3.0-sources.jar!/org/apache/spark/streaming/dstream/DStream.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="9954">
+          <caret line="584" column="6" lean-forward="false" selection-start-line="584" selection-start-column="6" selection-end-line="584" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Main.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Main.scala" />
+    <entry file="file://$USER_HOME$/Downloads/lz4-1.3.0/net/jpountz/lz4/LZ4BlockInputStream.class" />
+    <entry file="file://$PROJECT_DIR$/project/assembly.sbt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="50" column="94" lean-forward="false" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="94" />
+        <state relative-caret-position="18">
+          <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/RootProjectPlugin.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/plugins.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/net.jpountz.lz4/lz4/srcs/lz4-1.3.0-sources.jar!/net/jpountz/lz4/LZ4BlockInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="188" column="36" lean-forward="false" selection-start-line="188" selection-start-column="36" selection-end-line="188" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.lz4/lz4-java/srcs/lz4-java-1.4.0-sources.jar!/net/jpountz/lz4/LZ4BlockInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3222">
+          <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.3.0-sources.jar!/org/apache/spark/io/CompressionCodec.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="689">
+          <caret line="105" column="56" lean-forward="false" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-sql_2.11/srcs/spark-sql_2.11-2.3.0-sources.jar!/org/apache/spark/sql/internal/HiveSerDe.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-sql_2.11/srcs/spark-sql_2.11-2.3.0-sources.jar!/org/apache/spark/sql/SQLContext.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-sql_2.11/srcs/spark-sql_2.11-2.3.0-sources.jar!/org/apache/spark/sql/SaveMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="26" column="12" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-sql_2.11/srcs/spark-sql_2.11-2.3.0-sources.jar!/org/apache/spark/sql/DataFrameWriter.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="386" column="14" lean-forward="false" selection-start-line="386" selection-start-column="10" selection-end-line="386" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.spark-project.hive/hive-exec/jars/hive-exec-1.2.1.spark2.jar!/org/apache/hadoop/hive/conf/HiveConf.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17190">
+          <caret line="1047" column="160" lean-forward="false" selection-start-line="1047" selection-start-column="69" selection-end-line="1047" selection-end-column="160" />
           <folding>
-            <element signature="e#13#63#0" expanded="true" />
+            <marker date="1460067757000" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1460067757000" expanded="false" signature="151:1501" ph="..." />
+            <marker date="1460067757000" expanded="false" signature="2713:2724" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="2757:2763" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="2833:2898" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="2968:3576" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="3666:4371" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="4427:4912" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="4989:5117" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="5204:5311" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="5360:5371" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="5399:5405" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="5464:5475" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="5501:5507" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="5604:5687" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="5796:5922" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="5991:6002" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="6040:6046" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="6126:6137" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="6174:6180" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="6252:6455" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="6539:6706" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="6760:7020" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="7092:8809" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="8865:9355" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="9434:9561" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="9657:9718" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="9807:9912" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="9963:9974" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="10003:10009" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="10070:10081" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="10108:10114" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="10195:10325" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="10424:10486" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="10577:10684" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="10737:10748" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="10778:10784" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="10847:10858" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="10886:10892" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="10974:11107" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="11209:11273" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="11365:11476" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="11530:11541" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="11570:11576" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="11640:11651" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="11678:11684" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="11761:11885" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="11981:12038" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="12125:12228" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="12290:12301" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="12342:12348" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="12410:12421" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="12467:12473" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="12522:12533" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="12558:12564" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="12623:12634" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="12657:12663" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="12705:13014" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="13037:13048" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="13081:13087" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="13122:13133" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="13154:13160" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="13217:13276" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="13314:13595" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="13637:13648" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="13675:13681" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="13747:14048" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="14092:16917" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="16963:17361" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="17428:17677" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="17746:17957" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="18000:18344" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="18410:18928" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="19002:19369" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="19416:19942" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="19970:19981" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="20001:20007" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="20039:20050" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="20070:20076" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="20121:20222" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="20263:20274" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="20296:20302" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="20360:20371" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="20394:20400" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="20445:20456" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="20475:20481" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="20531:20542" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="20570:20576" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="20628:20639" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="20665:20671" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="20720:20925" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="20982:20993" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="21013:21019" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="21092:21290" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="21350:21822" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="21957:22084" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="22123:22709" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="22760:22771" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="22798:22804" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="22881:22939" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="22992:23003" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="23032:23038" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="23119:23181" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="23194:31900" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="31934:174277" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="167282:167375" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="167475:167571" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="167676:167778" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="167881:167968" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="168112:170806" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="170851:170866" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="170900:170910" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="170951:170966" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="170988:170998" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="171044:171059" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="171129:171139" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="171185:171200" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="171270:171280" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="171317:171598" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="171641:171656" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="171680:171690" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="171731:171898" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="171935:171950" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="171971:171981" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="172023:172038" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="172064:172074" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="172108:172123" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="172143:172153" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="172204:172543" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="172584:172599" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="172644:172654" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="172694:172709" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="172733:172743" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="172773:174271" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="172794:173031" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="172858:172877" ph="{}" />
+            <marker date="1460067757000" expanded="false" signature="172947:172970" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="172999:173017" ph=" }" />
+            <marker date="1460067757000" expanded="true" signature="173049:173190" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="173113:173176" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="173209:173347" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="173273:173333" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="173367:173506" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="173431:173492" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="173528:173669" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="173592:173655" ph="{...}" />
+            <marker date="1460067757000" expanded="true" signature="173702:173717" ph="{}" />
+            <marker date="1460067757000" expanded="true" signature="173760:173968" ph="{...}" />
+            <marker date="1460067757000" expanded="false" signature="174001:174020" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="174053:174067" ph=" }" />
+            <marker date="1460067757000" expanded="false" signature="174133:174152" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="174179:174193" ph=" }" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-sql_2.11/srcs/spark-sql_2.11-2.3.0-sources.jar!/org/apache/spark/sql/RuntimeConfig.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="143" column="0" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.spark-project.hive/hive-exec/jars/hive-exec-1.2.1.spark2.jar!/org/apache/hadoop/hive/conf/HiveConfUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <marker date="1460067757000" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1460067757000" expanded="true" signature="287:294" ph="{}" />
+            <marker date="1460067757000" expanded="false" signature="355:366" ph=" { " />
+            <marker date="1460067757000" expanded="false" signature="419:425" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-hive_2.11/srcs/spark-hive_2.11-2.3.0-sources.jar!/org/apache/spark/sql/hive/HiveUtils.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding>
+            <element signature="e#837#856#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Dependencies.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/build.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Main.scala" />
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Entity/SensorData.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Parser.scala" />
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Stream.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="46" column="75" lean-forward="false" selection-start-line="46" selection-start-column="75" selection-end-line="46" selection-end-column="75" />
+          <folding>
+            <element signature="e#13#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Main.scala" />
     <entry file="file://$PROJECT_DIR$/src/main/scala/com/Stream.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1404">
           <caret line="85" column="28" lean-forward="true" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
           <folding>
-            <element signature="e#13#68#0" expanded="true" />
+            <element signature="e#13#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -518,7 +864,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="24" column="45" lean-forward="false" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="45" />
-          <folding />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -537,16 +885,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Main.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="62" lean-forward="true" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
-          <folding>
-            <element signature="e#13#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Main.scala" />
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-sql_2.11/srcs/spark-sql_2.11-2.3.0-sources.jar!/org/apache/spark/sql/DataFrameReader.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -612,8 +951,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="36">
+          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -651,28 +991,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.sbt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Main.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="50" column="94" lean-forward="false" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="94" />
+        <state relative-caret-position="234">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
-            <element signature="e#13#63#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/Main.scala" />
     <entry file="file://$PROJECT_DIR$/src/main/scala/com/Stream.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="85" column="28" lean-forward="false" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
+        <state relative-caret-position="259">
+          <caret line="46" column="75" lean-forward="false" selection-start-line="46" selection-start-column="75" selection-end-line="46" selection-end-column="75" />
           <folding>
-            <element signature="e#13#68#0" expanded="true" />
+            <element signature="e#13#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
