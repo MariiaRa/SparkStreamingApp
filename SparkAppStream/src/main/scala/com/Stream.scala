@@ -1,89 +1,68 @@
 package com
 
+import com.Entity.SensorData
+import com.typesafe.config.{Config, ConfigFactory}
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.{DataFrame, SparkSession}
-import org.apache.spark.streaming.dstream.DStream
+import org.apache.spark.sql._
 import org.apache.spark.streaming.kafka010.{ConsumerStrategies, KafkaUtils, LocationStrategies}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
-import org.apache.spark.util.StatCounter
+
 object Stream {
 
-  def parse(rdd: org.apache.spark.rdd.RDD[String]): org.apache.spark.rdd.RDD[SensorDate] = {
-    var keys = rdd.map(_.split(","))
-    val prices = keys.map(p => SensorDate(p(0).split("=")(1), p(2).split("=")(1).toDouble, p(1).split("=")(1).replace(".", ""), p(3).split("=")(1)))
-    prices
+  val myConf: Config = ConfigFactory.load()
+  val brokers: String = myConf.getString("kafka.brokers")
+  val groupID: String = myConf.getString("kafka.groupID")
+  val topics = Set("spark_app")
+
+  val kafkaParams = Map[String, Object](
+    ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> brokers,
+    ConsumerConfig.GROUP_ID_CONFIG -> groupID,
+    ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
+    ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
+    ConsumerConfig.AUTO_OFFSET_RESET_CONFIG -> "latest"
+  )
+
+  def parseKafkaMessage(rdd: org.apache.spark.rdd.RDD[String]): org.apache.spark.rdd.RDD[SensorData] = {
+    val columns = rdd.map(_.split(","))
+    val sensorKafkaData = columns.map(p => SensorData(p(0).split("=")(1), p(1).split("=")(1).toDouble,
+      p(2).split("=")(1).replace(".", ""), p(3).split("=")(1)))
+    sensorKafkaData
   }
 
   def main(args: Array[String]): Unit = {
 
     val sparkConf = new SparkConf().setAppName("SparkAppStreaming")
-    val ssc = new StreamingContext(sparkConf, Seconds(20))
+      .set("spark.io.compression.codec", "org.apache.spark.io.SnappyCompressionCodec")
+      .set("hive.metastore.uris", "thrift://alpha.gemelen.ent:9083")
+      .set("spark.sql.warehouse.dir", "hdfs://alpha.gemelen.net:8020/user/hive/warehouse")
 
-    val topics = Set("spark_app")
+    val ssc = new StreamingContext(sparkConf, Seconds(10))
+    ssc.sparkContext.setLogLevel("ERROR")
 
-    // Create direct kafka stream with brokers and topics
-    // Enable checkpointing
-    ssc.checkpoint("_checkpoint")
-
-    val kafkaParams = Map[String, Object](
-      ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> "10.0.3.8:9092,10.0.3.9:9092,10.0.3.10:9092",
-      ConsumerConfig.GROUP_ID_CONFIG -> "test-consumer-group",
-      ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
-      ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer])
-    ConsumerConfig.AUTO_OFFSET_RESET_CONFIG -> "earliest"
-
-    val messages: DStream[String] = KafkaUtils.createDirectStream[String, String](
+    val messages = KafkaUtils.createDirectStream[String, String](
       ssc,
       LocationStrategies.PreferConsistent,
       ConsumerStrategies.Subscribe[String, String](topics, kafkaParams)).map(_.value())
 
-    // print messages
     messages.print()
 
-    var parsedStream = messages.mapPartitions {
-      rows =>
-        val parser = new Parser()
-        rows.map { row => parser.parse(row) }
-    }
-
-    var reducedStream = parsedStream
-      .map(record => (record.id, record.value.toDouble))
-      .reduceByKeyAndWindow((acc: Double, x: Double) => acc + x, Seconds(60), Seconds(60))
-
-    var countMetrics = parsedStream.map(record => (record.id, 1L)).reduceByKey(_ + _)
-
-    // Return a sliding window of records per sensor device every 1 min
-    var slidingSensorCounts: DStream[(String, Long)] = parsedStream.map(record => record.id)
-      .countByValueAndWindow(Seconds(60), Seconds(60))
-
-    // group by key, get statistics for column value
-    var keyStatsRDD = parsedStream
-      .map(record => (record.id, record.value.toDouble)).groupByKeyAndWindow(Seconds(60), Seconds(60)).
-      mapValues(values => StatCounter(values))
-
-    /** DataFrame operations inside your streaming program */
     messages.foreachRDD { rdd =>
-      var keys = rdd.map(_.split(","))
-      val sensors = keys.map(p => SensorDate(p(0).split("=")(1), p(1).split("=")(1).toDouble, p(2).split("=")(1).replace(".", ""), p(3).split("=")(1)))
-      // Get the singleton instance of SparkSession
-      val spark = SparkSession.builder.config(rdd.sparkContext.getConf).getOrCreate()
+
+      val sensors = parseKafkaMessage(rdd)
+
+      val spark = SparkSession.builder.config(rdd.sparkContext.getConf)
+        .enableHiveSupport()
+        .getOrCreate()
       // Convert RDD[String] to DataFrame
       val sensorDF: DataFrame = spark.createDataFrame(sensors)
-      sensorDF.printSchema()
       sensorDF.show()
-      // Create a temporary view
-      sensorDF.createOrReplaceTempView("sensorsDF")
-      // Do word count on DataFrame using SQL and print it
-      spark.sql("SELECT * FROM sensorsDF WHERE sensorsDF.id = \"T1\"").show()
+
+      import spark.sql
+      sensorDF.write.mode(SaveMode.Append).saveAsTable("sensor_metrics")
+      sql("SELECT * FROM sensor_metrics").show()
     }
-
-    // reducedStream.print()
-   slidingSensorCounts.print()
-   keyStatsRDD.print()
-
-    // Start the computation
     ssc.start()
     ssc.awaitTermination()
   }
