@@ -4,6 +4,7 @@ import akka.actor.{Actor, ActorLogging, Props, Timers}
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.{HttpMethods, HttpRequest, HttpResponse, StatusCodes}
 import akka.stream.{ActorMaterializer, ActorMaterializerSettings}
+import akka.util.ByteString
 import com.typesafe.config.{Config, ConfigFactory}
 import ua.com.sensors.TemperatureSensor.Start
 import ua.com.values.emission.Emission
@@ -46,11 +47,15 @@ class EmissionSensor(deviceID: String) extends Actor with ActorLogging with Time
 
     case GetActualEmission =>
       val url = host + path + parameter1 + deviceID + parameter2 + Emission.getValue
+      log.info("url is:" + url)
       val request = HttpRequest.apply(HttpMethods.GET, url)
       HttpRequest.apply()
       http.singleRequest(request).pipeTo(self)
 
-    case HttpResponse(StatusCodes.OK, headers, entity, _) => log.info("Got response: " + StatusCodes.OK)
+    case HttpResponse(StatusCodes.OK, headers, entity, _) =>
+      entity.dataBytes.runFold(ByteString(""))(_ ++ _).foreach { body =>
+        log.info("Got response, body: " + StatusCodes.OK)
+      }
 
     case resp@HttpResponse(code, _, _, _) =>
       log.info("Request failed, response code: " + code)
