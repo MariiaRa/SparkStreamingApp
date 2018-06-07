@@ -38,7 +38,7 @@ class TemperatureSensor(deviceID: String) extends Actor with ActorLogging with T
 
   override def receive: Receive = {
     case Start =>
-      timers.startPeriodicTimer(Key, GetActualTemperature, 10.second)
+      timers.startPeriodicTimer(Key, GetActualTemperature, 5.second)
       log.info("Started")
 
     case GetActualTemperature => {
