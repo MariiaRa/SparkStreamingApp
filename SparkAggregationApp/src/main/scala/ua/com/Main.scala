@@ -2,7 +2,7 @@ package ua.com
 
 import com.typesafe.config.{Config, ConfigFactory}
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 
 object Main {
 
@@ -14,19 +14,18 @@ object Main {
   val user: String = myConf.getString("psql.user")
   val password: String = myConf.getString("psql.password")
   val driver: String = myConf.getString("psql.driver")
+  val url: String = connection + host + ":" + port + "/" + db + "?user=" + user + "&password=" + password
 
-  val url: String = connection + host + ":" + port + "/" + db
+  val hiveTable: String = myConf.getString("hive.table")
 
-  def getSensorData(sparkSession: SparkSession, tableName: String): DataFrame = {
-    val dictionaryDataDF = sparkSession.read.
+  private def getSensorData(sparkSession: SparkSession, tableName: String): DataFrame = {
+    val dictionaryDF = sparkSession.read.
       format("jdbc")
       .option("url", url)
       .option("dbtable", tableName)
-      .option("user", user)
-      .option("password", password)
       .option("driver", driver)
       .load()
-    dictionaryDataDF
+    dictionaryDF
   }
 
   def main(args: Array[String]): Unit = {
@@ -35,6 +34,8 @@ object Main {
       .set("spark.io.compression.codec", "org.apache.spark.io.SnappyCompressionCodec")
       .set("hive.metastore.uris", "thrift://delta.gemelen.net:9083")
       .set("spark.sql.warehouse.dir", "hdfs://alpha.gemelen.net:8020/apps/hive/warehouse")
+      .set("hive.exec.dynamic.partition", "true")
+      .set("hive.exec.dynamic.partition.mode", "nonstrict")
 
     val spark = SparkSession.builder.config(sparkConf)
       .appName("SparkAggregation")
@@ -46,31 +47,29 @@ object Main {
 
     val sensorDictionaryOne = getSensorData(spark, "sensor_data")
     sensorDictionaryOne.createOrReplaceTempView("dictionaryOne")
-    val dictionaryOne = sql("SELECT * FROM dictionaryOne")
-    dictionaryOne.show()
 
     val sensorDictionaryTwo = getSensorData(spark, "sensor_location")
     sensorDictionaryTwo.createOrReplaceTempView("dictionaryTwo")
-    val dictionaryTwo = sql("SELECT * FROM dictionaryTwo")
-    dictionaryTwo.show()
 
-    val dfHive = sql("SELECT * FROM sensors")
-    sql("SELECT max(rddID) AS rddId FROM metrics").createOrReplaceTempView("rddId")
-    val rddId1 = sql("SELECT max(rddID) FROM metrics").first().getAs[Long](0)
+    sql("SELECT max(rddId) AS rddId FROM sensors").createOrReplaceTempView("rddId")
 
-    sql("SELECT id, max(value) AS max, min(value) AS min, avg(value) AS avg FROM metrics GROUP BY id ORDER BY id").createOrReplaceTempView("stats")
-    sql("SELECT * FROM stats").show()
-    //sql("CREATE TABLE IF NOT EXISTS aggregation (id STRING, type String, location String, max DECIMAL(10,4), min DECIMAL(10,4), avg DECIMAL(10,4)) PARTITIONED BY (rddId BIGINT)")
-
+    val rddId1 = sql("SELECT max(rddID) FROM sensors").first().getAs[Long](0)
     val rddId2 = sql("SELECT max(rddID) FROM aggregation").first().getAs[Long](0)
 
+    //sql("CREATE TABLE IF NOT EXISTS aggregation (id STRING, type String, location String, max DECIMAL(10,4), min DECIMAL(10,4), avg DECIMAL(10,4)) PARTITIONED BY (rddId BIGINT)")
+
     if (rddId1 > rddId2) {
-      sql("SELECT dictionaryOne.id, dictionaryOne.type, dictionaryTwo.location, stats.max, stats.min, stats.avg" +
+      sql(s"SELECT id, max(value) AS max, min(value) AS min, avg(value) AS avg FROM sensors WHERE rddId > $rddId2 GROUP BY id ORDER BY id")
+        .createOrReplaceTempView("stats")
+
+      sql("SELECT * FROM  ( SELECT dictionaryOne.id, dictionaryOne.type, dictionaryTwo.location, stats.max, stats.min, stats.avg " +
         "FROM dictionaryOne " +
         "JOIN dictionaryTwo ON (dictionaryOne.id = dictionaryTwo.id) " +
-        "JOIN stats ON (dictionaryOne.id = stats.id) "
-      ).createOrReplaceTempView("aggregated")
+        "JOIN stats ON (dictionaryOne.id = stats.id) ORDER BY dictionaryOne.id ) CROSS JOIN rddId ")
+        .createOrReplaceTempView("aggregated")
+
+      val agg = sql("SELECT * FROM aggregated")
+      agg.write.mode(SaveMode.Append).insertInto(hiveTable)
     }
-    sql("SELECT * FROM aggregated").show()
   }
 }
