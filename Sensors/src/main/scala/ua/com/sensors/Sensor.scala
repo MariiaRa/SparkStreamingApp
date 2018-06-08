@@ -40,19 +40,19 @@ class Sensor(deviceID: String, value: Parameters) extends Actor with ActorLoggin
   override def receive: Receive = {
     case Start =>
       timers.startPeriodicTimer(Key, GetActualData, 5.second)
-      log.info("Started")
+      log.info("Started!")
 
     case GetActualData => {
       val url = host + path + parameter1 + deviceID + parameter2 + value.getValue
       val request = HttpRequest.apply(HttpMethods.GET, url)
       HttpRequest.apply()
       http.singleRequest(request).pipeTo(self)
-      log.info("requested url: " + url)
+      log.info("Requested url: " + url)
     }
 
     case HttpResponse(StatusCodes.OK, headers, entity, _) =>
       entity.dataBytes.runFold(ByteString(""))(_ ++ _).foreach { body =>
-        log.info("Got response, body: " + StatusCodes.OK)
+        log.info("Got response: " + StatusCodes.OK)
       }
 
     case resp@HttpResponse(code, _, _, _) =>
