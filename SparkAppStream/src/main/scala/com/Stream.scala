@@ -19,13 +19,14 @@ object Stream {
   val hiveTable: String = myConf.getString("hive.table")
   val metastoreUris: String = myConf.getString("hive.metastore")
   val warehouse: String = myConf.getString("hive.warehouse")
+  val checkpointFolder: String = myConf.getString("spark.checkpoint")
   val topics = Set("spark")
   val kafkaParams = Map[String, Object](
     ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> brokers,
     ConsumerConfig.GROUP_ID_CONFIG -> groupID,
     ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
-    ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG -> classOf[ObjectDeserializer],
-    ConsumerConfig.AUTO_OFFSET_RESET_CONFIG -> "latest"
+    ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG -> classOf[ObjectDeserializer]
+    // ConsumerConfig.AUTO_OFFSET_RESET_CONFIG -> "latest"
   )
 
   def main(args: Array[String]): Unit = {
@@ -39,7 +40,7 @@ object Stream {
 
     val ssc = new StreamingContext(sparkConf, Seconds(10))
     ssc.sparkContext.setLogLevel("ERROR")
-
+    ssc.checkpoint(checkpointFolder)
     val messages = KafkaUtils.createDirectStream[String, SensorData](
       ssc,
       PreferConsistent,
@@ -62,8 +63,8 @@ object Stream {
       transformed.show()
 
       transformed.write.mode(SaveMode.Append).insertInto(hiveTable)
-
     }
+
     ssc.start()
     ssc.awaitTermination()
   }
