@@ -1,7 +1,6 @@
 package ua.com.values
 
 import org.joda.time.DateTime
-
 import scala.math.BigDecimal.RoundingMode
 import scala.util.Random
 
@@ -9,7 +8,7 @@ sealed trait Parameters {
   def getValue: BigDecimal
 }
 
-object Temperature extends Parameters {
+case object Temperature extends Parameters {
   override def getValue: BigDecimal = {
     val season = Seasons.getSeason(DateTime.now().getMonthOfYear)
     val (min, max) = RoomValues.avgRoomTemps(season)
@@ -18,14 +17,14 @@ object Temperature extends Parameters {
   }
 }
 
-object Emission extends Parameters {
+case object Emission extends Parameters {
   def getValue: BigDecimal = {
     val randNum = Random.nextInt(9) * 0.001
     BigDecimal.valueOf(randNum).setScale(3)
   }
 }
 
-object Humidity extends Parameters {
+case object Humidity extends Parameters {
   def getValue: BigDecimal = {
     val season = Seasons.getSeason(DateTime.now().getMonthOfYear)
     val (min, max) = RoomValues.avgRoomHumidity(season)
