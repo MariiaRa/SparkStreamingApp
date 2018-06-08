@@ -27,7 +27,7 @@ object Main {
   private def startActor(deviceID: String, value: Parameters, n: Int): Unit = {
     for (i <- 1 to 3) {
       logger.info("Actor has been created.")
-      val device: ActorRef = system.actorOf(Sensor.props(deviceID, value), deviceID)
+      val device: ActorRef = system.actorOf(Sensor.props(deviceID+i.toString, value), deviceID)
       device ! Start
     }
   }
