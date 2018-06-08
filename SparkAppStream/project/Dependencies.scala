@@ -1,9 +1,9 @@
 import sbt._
 
-val sparkVersion = "2.0.0"
-val configVersion = "1.3.2"
-
 object Dependencies {
+  val sparkVersion = "2.0.0"
+  val configVersion = "1.3.2"
+
   val spartCore = "org.apache.spark" %% "spark-core" % sparkVersion
   val sparkSQL = "org.apache.spark" %% "spark-sql" % sparkVersion
   val config = "com.typesafe" % "config" % configVersion
