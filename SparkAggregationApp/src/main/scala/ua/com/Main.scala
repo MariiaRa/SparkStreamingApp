@@ -3,6 +3,7 @@ package ua.com
 import com.typesafe.config.{Config, ConfigFactory}
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
+import org.apache.spark.sql.functions._
 
 object Main {
 
@@ -67,14 +68,15 @@ object Main {
       sql(s"SELECT id, max(value) AS max, min(value) AS min, avg(value) AS avg FROM sensors WHERE rddId > $rddId2 GROUP BY id ORDER BY id")
         .createOrReplaceTempView("stats")
 
-      sql("SELECT * FROM  ( SELECT dictionaryOne.id, dictionaryOne.type, dictionaryTwo.location, stats.max, stats.min, stats.avg " +
-        "FROM dictionaryOne " +
-        "JOIN dictionaryTwo ON (dictionaryOne.id = dictionaryTwo.id) " +
-        "JOIN stats ON (dictionaryOne.id = stats.id) ORDER BY dictionaryOne.id ) CROSS JOIN rddId ")
+      sql("SELECT dictionaryOne.id, dictionaryOne.type, dictionaryTwo.location, stats.max, stats.min, stats.avg " +
+        "FROM stats " +
+        "JOIN dictionaryOne ON (dictionaryOne.id = stats.id) " +
+        "JOIN dictionaryTwo ON (dictionaryTwo.id = stats.id) ORDER BY stats.id")
         .createOrReplaceTempView("aggregated")
 
-      val agg = sql("SELECT * FROM aggregated")
+      val agg = sql("SELECT * FROM aggregated").toDF().withColumn("rddId", lit(rddId1))
       agg.write.mode(SaveMode.Append).insertInto(hiveTable)
+      agg.show()
     }
   }
 }
