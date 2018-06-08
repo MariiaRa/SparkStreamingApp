@@ -7,6 +7,7 @@ import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 object Main {
 
   val myConf: Config = ConfigFactory.load()
+
   val connection: String = myConf.getString("psql.connection")
   val host: String = myConf.getString("psql.host")
   val port: String = myConf.getString("psql.port")
@@ -15,8 +16,12 @@ object Main {
   val password: String = myConf.getString("psql.password")
   val driver: String = myConf.getString("psql.driver")
   val url: String = connection + host + ":" + port + "/" + db + "?user=" + user + "&password=" + password
+  val data: String = myConf.getString("psql.table.data")
+  val location: String = myConf.getString("psql.table.location")
 
   val hiveTable: String = myConf.getString("hive.table")
+  val metastoreUris: String = myConf.getString("hive.metastore")
+  val warehouse: String = myConf.getString("hive.warehouse")
 
   private def getSensorData(sparkSession: SparkSession, tableName: String): DataFrame = {
     val dictionaryDF = sparkSession.read.
@@ -32,8 +37,8 @@ object Main {
 
     val sparkConf = new SparkConf().setAppName("SparkAggregateStreaming")
       .set("spark.io.compression.codec", "org.apache.spark.io.SnappyCompressionCodec")
-      .set("hive.metastore.uris", "thrift://delta.gemelen.net:9083")
-      .set("spark.sql.warehouse.dir", "hdfs://alpha.gemelen.net:8020/apps/hive/warehouse")
+      .set("hive.metastore.uris", metastoreUris)
+      .set("spark.sql.warehouse.dir", warehouse)
       .set("hive.exec.dynamic.partition", "true")
       .set("hive.exec.dynamic.partition.mode", "nonstrict")
 
@@ -45,10 +50,10 @@ object Main {
     spark.sparkContext.setLogLevel("ERROR")
     import spark.sql
 
-    val sensorDictionaryOne = getSensorData(spark, "sensor_data")
+    val sensorDictionaryOne = getSensorData(spark, data)
     sensorDictionaryOne.createOrReplaceTempView("dictionaryOne")
 
-    val sensorDictionaryTwo = getSensorData(spark, "sensor_location")
+    val sensorDictionaryTwo = getSensorData(spark, location)
     sensorDictionaryTwo.createOrReplaceTempView("dictionaryTwo")
 
     sql("SELECT max(rddId) AS rddId FROM sensors").createOrReplaceTempView("rddId")
