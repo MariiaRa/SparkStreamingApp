@@ -6,7 +6,7 @@ object Dependencies {
   val hiveJdbcVersion = "1.2.1"
   val postgreSQLVersion = "42.2.2"
 
-  val spartCore = "org.apache.spark" %% "spark-core" % sparkVersion
+  val sparkCore = "org.apache.spark" %% "spark-core" % sparkVersion
   val sparkSQL = "org.apache.spark" %% "spark-sql" % sparkVersion
   val config = "com.typesafe" % "config" % "1.3.2"
   val sparkStreaming = "org.apache.spark" %% "spark-streaming" % sparkVersion
@@ -15,5 +15,5 @@ object Dependencies {
   val postgreSQL = "org.postgresql" % "postgresql" % postgreSQLVersion
 
   val appDependencies =
-    Seq(spartCore, config, sparkStreaming, sparkSQL, hive, hiveJdbc, postgreSQL)
+    Seq(sparkCore, config, sparkStreaming, sparkSQL, hive, hiveJdbc, postgreSQL)
 }
