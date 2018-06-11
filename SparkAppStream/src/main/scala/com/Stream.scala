@@ -57,8 +57,6 @@ object Stream {
 
       val sensorDF: DataFrame = spark.createDataFrame(rdd)
       val transformed = sensorDF.withColumn("rddId", lit(batchId))
-      transformed.show()
-
       transformed.write.mode(SaveMode.Append).insertInto(hiveTable)
     }
 
