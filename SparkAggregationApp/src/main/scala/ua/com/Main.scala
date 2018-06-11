@@ -58,11 +58,8 @@ object Main {
     sensorDictionaryTwo.createOrReplaceTempView("dictionaryTwo")
 
     sql("SELECT max(rddId) AS rddId FROM sensors").createOrReplaceTempView("rddId")
-
     val rddId1 = sql("SELECT max(rddID) FROM sensors").first().getAs[Long](0)
     val rddId2 = sql("SELECT max(rddID) FROM aggregation").first().getAs[Long](0)
-
-    //sql("CREATE TABLE IF NOT EXISTS aggregation (id STRING, type String, location String, max DECIMAL(10,4), min DECIMAL(10,4), avg DECIMAL(10,4)) PARTITIONED BY (rddId BIGINT)")
 
     if (rddId1 > rddId2) {
       sql(s"SELECT id, max(value) AS max, min(value) AS min, avg(value) AS avg FROM sensors WHERE rddId > $rddId2 GROUP BY id ORDER BY id")
