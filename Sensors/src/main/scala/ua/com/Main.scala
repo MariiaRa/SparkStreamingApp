@@ -16,28 +16,24 @@ object Main {
 
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
-
   private val logger = LoggerFactory.getLogger(this.getClass)
 
   val params: Map[String, Parameters] = Map("T" -> Temperature, "E" -> Emission, "H" -> Humidity)
-
   val myConf: Config = ConfigFactory.load()
   val number: Int = myConf.getInt("actor.number")
 
   private def startActor(deviceID: String, value: Parameters, n: Int): Unit = {
-    for (i <- 1 to 3) {
+    (1 to number).foreach { i =>
       logger.info("Actor has been created.")
-      val device: ActorRef = system.actorOf(Sensor.props(deviceID+i.toString, value), deviceID)
+      val device: ActorRef = system.actorOf(Sensor.props(deviceID + i.toString, value), deviceID)
       device ! Start
     }
   }
 
   def main(args: Array[String]): Unit = {
-
     params.foreach {
       case (key, value) =>
         startActor(key, value, number)
     }
   }
-
 }
