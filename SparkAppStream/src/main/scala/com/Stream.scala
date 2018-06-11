@@ -26,7 +26,6 @@ object Stream {
     ConsumerConfig.GROUP_ID_CONFIG -> groupID,
     ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
     ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG -> classOf[ObjectDeserializer]
-    // ConsumerConfig.AUTO_OFFSET_RESET_CONFIG -> "latest"
   )
 
   def main(args: Array[String]): Unit = {
