@@ -50,14 +50,12 @@ object Stream {
 
     messages.foreachRDD { rdd =>
       val batchId = System.currentTimeMillis()
-
       val spark = SparkSession.builder.config(rdd.sparkContext.getConf)
         .enableHiveSupport()
         .getOrCreate()
 
       import org.apache.spark.sql.functions._
 
-      // Convert RDD[String] to DataFrame
       val sensorDF: DataFrame = spark.createDataFrame(rdd)
       val transformed = sensorDF.withColumn("rddId", lit(batchId))
       transformed.show()
