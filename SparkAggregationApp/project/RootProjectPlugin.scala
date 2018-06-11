@@ -19,5 +19,4 @@ object RootProjectPlugin extends AutoPlugin {
     // do not publish root build. will fail on CI
     publish := false
   )
-
 }
