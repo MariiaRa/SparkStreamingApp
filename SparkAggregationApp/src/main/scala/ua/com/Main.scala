@@ -73,7 +73,6 @@ object Main {
 
       val agg = sql("SELECT * FROM aggregated").toDF().withColumn("rddId", lit(rddId1))
       agg.write.mode(SaveMode.Append).insertInto(hiveTable)
-      agg.show()
     }
   }
 }
