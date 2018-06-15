@@ -46,7 +46,6 @@ object Stream {
       Subscribe[String, SensorData](topics, kafkaParams)
     ).map(_.value())
 
-
     messages.foreachRDD { rdd =>
       val batchId = System.currentTimeMillis()
       val spark = SparkSession.builder.config(rdd.sparkContext.getConf)
