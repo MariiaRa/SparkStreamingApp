@@ -1,6 +1,6 @@
 import Dependencies._
 import sbt.Keys.libraryDependencies
-
+import sbt._
 lazy val root = (project in file(".")).
   enablePlugins(RootProjectPlugin).
   settings(
