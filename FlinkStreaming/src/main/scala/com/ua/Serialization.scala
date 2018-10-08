@@ -90,6 +90,7 @@ object Serialization {
     }
 
     avroRecords.addSink(sink).setParallelism(4)
+    avroRecords.addSink(KafkaSink.myProducer).setParallelism(2)
 
     env.execute("Reading from Kafka and writing generic record to hdfs")
   }
