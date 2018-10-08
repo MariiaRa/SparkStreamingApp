@@ -1,69 +1,56 @@
 package com.ua
 
-import java.util.Properties
+import java.util._
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.ua.Bucketing.MyBucketer
-import com.ua.Deserializer.FlinkObjectDeserializer
-import com.ua.Entity.SensorData
 import org.apache.flink.api.common.restartstrategy.RestartStrategies
-import org.apache.flink.api.common.serialization.SimpleStringSchema
-import org.apache.flink.core.fs.FileSystem.WriteMode
-import org.apache.flink.streaming.connectors.fs.SequenceFileWriter
-import org.apache.flink.streaming.connectors.fs.bucketing.{BucketingSink, DateTimeBucketer}
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011
-import org.apache.flink.table.api.TableEnvironment
-import org.apache.flink.table.sinks.CsvTableSink
-import org.apache.hadoop.io.{IntWritable, Text}
+import org.apache.flink.streaming.connectors.fs.bucketing.BucketingSink
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010
+import com.ua.Bucketing.MyTypedBucketer
+import com.ua.Deserializer.FlinkObjectDeserializer
+import com.ua.Entity.{NewSensorData, SensorData}
 
-object Main {
+class Main {
   val myConf: Config = ConfigFactory.load()
-  val brokers: String = myConf.getString("kafka.brokers")
-  val groupID: String = myConf.getString("kafka.groupID")
-  val topic: String = myConf.getString("kafka.topic")
-
+  val brokers: String = myConf.getString("kafka-remote.brokers")
+  val groupID: String = myConf.getString("kafka-remote.groupID")
+  val topic: String = myConf.getString("kafka-remote.fromTopic")
   val properties = new Properties()
   properties.setProperty("bootstrap.servers", brokers)
   properties.setProperty("group.id", groupID)
 
   def main(args: Array[String]): Unit = {
     import org.apache.flink.streaming.api.scala._
+
     val env = StreamExecutionEnvironment.getExecutionEnvironment
-    val tableEnv = TableEnvironment.getTableEnvironment(env)
-    env.getConfig.disableSysoutLogging
+    //env.getConfig.disableSysoutLogging
     env.getConfig.setRestartStrategy(RestartStrategies.fixedDelayRestart(4, 10000))
     env.enableCheckpointing(5000)
+    env.setParallelism(4) //we have 4 task managers with 1 task slop per each
 
-    //val myConsumer = new FlinkKafkaConsumer011[SensorData](topic, new FlinkObjectDeserializer(), properties)
-    val myConsumer = new FlinkKafkaConsumer011[String](topic, new SimpleStringSchema, properties)
+    val myConsumerTyped = new FlinkKafkaConsumer010[SensorData](topic, new FlinkObjectDeserializer(), properties)
+    println("Connecting to kafka.")
 
-    myConsumer.setStartFromEarliest() // start from the earliest record possible
-    val stream: DataStream[String] = env.addSource(myConsumer)
-    val transformed = stream.map {
-      elem =>
-        elem + "," + System.currentTimeMillis()
+    val streamTyped: DataStream[SensorData] = env.addSource(myConsumerTyped)
+    println("Streaming.")
+
+    val transformed = streamTyped.map {
+      record =>
+        NewSensorData(
+          record.id,
+          record.value,
+          record.input_time,
+          record.ip,
+          System.currentTimeMillis())
     }
 
-    // transformed.writeAsText("hdfs://localhost:9000/apps/flink/sinkText")
 
-    transformed.print()
-
-//    transformed.addSink(new BucketingSink[String]("hdfs://localhost:9000/apps/flink/buckets"))
-
-    val sink = new BucketingSink[String]("hdfs://localhost:9000/apps/flink/test")
-    //sink.setBucketer(new DateTimeBucketer[String]("yyyy-MM-dd-HHmm"))
-    sink.setBucketer(new MyBucketer())
-
+    val sink = new BucketingSink[NewSensorData]("hdfs://alpha.gemelen.net:8020/flink/buckets")
+    sink.setBucketer(new MyTypedBucketer())
+    //sink.setBatchSize(1024 * 1024 * 400); // this is 400 MB,
+    sink.setBatchRolloverInterval(1 * 30 * 1000); // this is 30 sec
     transformed.addSink(sink)
 
-    /* val table = tableEnv.fromDataStream(transformed)
-     table.writeToSink(
-       new CsvTableSink(
-         "hdfs://localhost:9000/apps/flink/sink2.csv",
-         fieldDelim = ",",
-         numFiles = 1,
-         writeMode = WriteMode.OVERWRITE))*/
-
-    env.execute("Reading from Kafka")
+    env.execute("Reading from Kafka and writing to hdfs")
   }
 }
